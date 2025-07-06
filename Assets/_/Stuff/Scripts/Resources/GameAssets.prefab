@@ -44,4 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b803e20a4fd97b45be60489e2bf6f97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Shotgun: {fileID: 21300000, guid: e197990fd7d75fe48bcde5980fda4db7, type: 3}
+  Shotgun: {fileID: 21300000, guid: 15f7edfff7a68144dae199f2273f6774, type: 3}
+  Handgun: {fileID: 21300000, guid: e197990fd7d75fe48bcde5980fda4db7, type: 3}
+  Grenade: {fileID: 21300000, guid: 9649cbf1141e7c547a5974df091006fc, type: 3}
+  HeavyGun: {fileID: 21300000, guid: 97ea88e1c3090ea4c889e2ba69dd7ad8, type: 3}
+  Rifle: {fileID: 21300000, guid: e4f1ac9f77c5ee14f939c0bc48aeb6bf, type: 3}
+  Sniper: {fileID: 21300000, guid: 693a9b460af8fa44999c7b9237a95429, type: 3}
