@@ -4,10 +4,10 @@ using UnityEngine;
 
 public interface IShopCustomer 
 {
-    public void BoughtItem(Item_RE.ItemType itemType)
-    {
-        Debug.Log("Bought item: " + itemType);
-    }
+
+
+    bool BoughtItem(Item_RE.ItemType itemType);
+    bool TrySpendGoldAmount(int goldAmount);
 
 
 
