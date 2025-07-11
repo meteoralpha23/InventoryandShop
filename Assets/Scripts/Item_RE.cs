@@ -56,4 +56,6 @@ public class Item_RE : MonoBehaviour
         Epic,
         Legendary
     }
+
+
 }

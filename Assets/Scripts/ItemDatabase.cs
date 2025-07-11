@@ -5,39 +5,44 @@ public class ItemDatabase : MonoBehaviour
 {
     public static ItemDatabase Instance;
 
+    public List<Item> allItems = new List<Item>();
+
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
         LoadItems();
     }
 
-    public List<Item> allItems = new List<Item>();
-
     private void LoadItems()
     {
-        // Add sample items here
-        allItems.Add(new Item(
-            name: "Shotgun",
-            category: ItemCategory.Weapon,
+        Item shotgun = new Item(
+            itemName: "Shotgun",
+            category: ItemCategory.Weapons,
             icon: GameAssets.i.Shotgun,
             description: "A powerful close-range firearm.",
-            buyPrice: 500,
-            sellPrice: 300,
+            buyingPrice: 500,
+            sellingPrice: 300,
             weight: 5.0f,
             rarity: Rarity.Rare,
             quantity: 1
-        ));
+        );
 
-        // Add more test items similarly...
+        allItems.Add(shotgun);
     }
 
-    public Item GetItemByName(string name)
+    public Item GetItemByName(string itemName)
     {
-        return allItems.Find(i => i.name == name);
+        return allItems.Find(item => item.itemName == itemName);
     }
 
     public List<Item> GetItemsByCategory(ItemCategory category)
     {
-        return allItems.FindAll(i => i.category == category);
+        return allItems.FindAll(item => item.category == category);
     }
 }

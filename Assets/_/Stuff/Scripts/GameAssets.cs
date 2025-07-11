@@ -18,4 +18,11 @@ public class GameAssets : MonoBehaviour
     public Sprite HeavyGun;
     public Sprite Rifle;
     public Sprite Sniper;
+
+    public Sprite Bandage;
+    public Sprite Medkit;
+    public Sprite GoldCoin;
+    public Sprite Gem;
+    public Sprite AncientRelic;
+    public Sprite MetalScrap;
 }

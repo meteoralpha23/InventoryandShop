@@ -3,23 +3,20 @@ using UnityEngine;
 public class Player : MonoBehaviour, IShopCustomer
 {
     [SerializeField] private int goldAmount = 100;
-    [SerializeField] private SHOP_UI shopUI;
-    private void Start()
-    {
-        Inventory inventory = GetComponent<Inventory>();
-        Inventory_UI inventoryUI = inventory.GetComponent<Inventory_UI>();
-    
 
-        if (inventoryUI != null && shopUI != null)
+    public bool TrySpendGoldAmount(int amount)
+    {
+        if (goldAmount >= amount)
         {
+<<<<<<< Updated upstream
             inventoryUI = inventory.GetComponentInChildren<Inventory_UI>();
             inventoryUI.Init(inventory,   shopUI, this);
         }
     }
 
-    public bool BoughtItem(Item_RE.ItemType itemType)
+    public bool BoughtItem(Item.ItemType itemType)
     {
-        int cost = Item_RE.GetCost(itemType);
+        int cost = Item.GetCost(itemType);
 
         if (!TrySpendGoldAmount(cost))
         {
@@ -46,15 +43,26 @@ public class Player : MonoBehaviour, IShopCustomer
         if (goldAmount >= spendGoldAmount)
         {
             goldAmount -= spendGoldAmount;
+=======
+            goldAmount -= amount;
+            UIManager.Instance.UpdateGoldUI(goldAmount);
+>>>>>>> Stashed changes
             return true;
         }
         return false;
     }
+
+    public int GetGoldAmount() => goldAmount;
+
     public void AddGold(int amount)
     {
         goldAmount += amount;
         UIManager.Instance.UpdateGoldUI(goldAmount);
     }
 
+    public void BoughtItem(Item_RE.ItemType itemType)
+    {
+        GetComponent<Inventory>().AddItem(itemType);
+        UIManager.Instance.ShowWarning($"Bought {itemType}");
     }
-    
+}
