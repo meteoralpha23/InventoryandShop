@@ -50,3 +50,9 @@ MonoBehaviour:
   HeavyGun: {fileID: 21300000, guid: 97ea88e1c3090ea4c889e2ba69dd7ad8, type: 3}
   Rifle: {fileID: 21300000, guid: e4f1ac9f77c5ee14f939c0bc48aeb6bf, type: 3}
   Sniper: {fileID: 21300000, guid: 693a9b460af8fa44999c7b9237a95429, type: 3}
+  Bandage: {fileID: 21300000, guid: 4634d87584aafe546b622ae2f6e5b9ac, type: 3}
+  Medkit: {fileID: 21300000, guid: 3dc9277b4d7254c4bb24a43248eea086, type: 3}
+  GoldCoin: {fileID: 21300000, guid: cce7f5ea931569049963cde10e4e5d77, type: 3}
+  Gem: {fileID: 21300000, guid: ab13573ac7c44714d9eee118f1c540d5, type: 3}
+  AncientRelic: {fileID: 21300000, guid: d9c7df35c6600dd42b897ce1d9ae898b, type: 3}
+  MetalScrap: {fileID: 21300000, guid: a34a8f8870f46c04dbe86c7ed173ba1f, type: 3}

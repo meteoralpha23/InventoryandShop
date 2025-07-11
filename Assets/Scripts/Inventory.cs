@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    private List<Item_RE.ItemType> itemList = new List<Item_RE.ItemType>();
+    private List<Item.ItemType> itemList = new List<Item.ItemType>();
     [SerializeField] private Inventory_UI inventoryUI;
 
-    public void AddItem(Item_RE.ItemType itemType)
+    public void AddItem(Item.ItemType itemType)
     {
         if (!itemList.Contains(itemType))
         {
@@ -16,16 +16,16 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public bool HasItem(Item_RE.ItemType itemType)
+    public bool HasItem(Item.ItemType itemType)
     {
         return itemList.Contains(itemType);
     }
 
-    public List<Item_RE.ItemType> GetAllItems()
+    public List<Item.ItemType> GetAllItems()
     {
         return itemList;
     }
-    public void RemoveItem(Item_RE.ItemType itemType)
+    public void RemoveItem(Item.ItemType itemType)
     {
         if (itemList.Contains(itemType))
         {

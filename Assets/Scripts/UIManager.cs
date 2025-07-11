@@ -70,10 +70,10 @@ public class UIManager : MonoBehaviour
         ShowWarning(message, 1f);
     }
 
-    public void ShowBuyConfirmationPopup(Item_RE.ItemType itemType, System.Action onConfirm)
+    public void ShowBuyConfirmationPopup(Item.ItemType itemType, System.Action onConfirm)
     {
         buyConfirmPopup.SetActive(true);
-        buyConfirmPopupText.SetText($"Buy {itemType} for {Item_RE.GetCost(itemType)} gold?");
+        buyConfirmPopupText.SetText($"Buy {itemType} for {Item.GetCost(itemType)} gold?");
 
         yesButton.onClick.RemoveAllListeners();
         noButton.onClick.RemoveAllListeners();
@@ -104,4 +104,34 @@ public class UIManager : MonoBehaviour
         if (bottomPromptText != null)
             bottomPromptText.gameObject.SetActive(false);
     }
+<<<<<<< Updated upstream
+    public void HideBuyConfirmationPopup()
+    {
+        if (buyConfirmPopup != null)
+            buyConfirmPopup.SetActive(false);
+    }
+=======
+    public void ShowSellConfirmationPopup(Item_RE.ItemType itemType, System.Action onConfirm)
+    {
+        int sellPrice = Mathf.FloorToInt(Item_RE.GetCost(itemType) * 0.5f);
+
+        buyConfirmPopup.SetActive(true);
+        buyConfirmPopupText.SetText($"Sell {itemType} for {sellPrice} gold?");
+
+        yesButton.onClick.RemoveAllListeners();
+        noButton.onClick.RemoveAllListeners();
+
+        yesButton.onClick.AddListener(() =>
+        {
+            buyConfirmPopup.SetActive(false);
+            onConfirm?.Invoke();
+        });
+
+        noButton.onClick.AddListener(() =>
+        {
+            buyConfirmPopup.SetActive(false);
+        });
+    }
+
+>>>>>>> Stashed changes
 }
