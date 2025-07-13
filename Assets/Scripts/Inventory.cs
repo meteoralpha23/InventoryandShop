@@ -1,36 +1,27 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    private List<Item.ItemType> itemList = new List<Item.ItemType>();
-    [SerializeField] private Inventory_UI inventoryUI;
+    public event Action OnInventoryChanged;
+    private List<ItemData> itemList = new();
 
-    public void AddItem(Item.ItemType itemType)
+    public void AddItem(ItemData item)
     {
-        if (!itemList.Contains(itemType))
+        if (!itemList.Contains(item))
         {
-            itemList.Add(itemType);
-            Debug.Log("Item added to inventory: " + itemType);
-            inventoryUI?.RefreshInventory(itemList); 
+            itemList.Add(item);
+            OnInventoryChanged?.Invoke();
         }
     }
 
-    public bool HasItem(Item.ItemType itemType)
+    public void RemoveItem(ItemData item)
     {
-        return itemList.Contains(itemType);
+        if (itemList.Remove(item))
+            OnInventoryChanged?.Invoke();
     }
 
-    public List<Item.ItemType> GetAllItems()
-    {
-        return itemList;
-    }
-    public void RemoveItem(Item.ItemType itemType)
-    {
-        if (itemList.Contains(itemType))
-        {
-            itemList.Remove(itemType);
-            inventoryUI?.RefreshInventory(itemList);
-        }
-    }
+    public List<ItemData> GetAllItems() => new(itemList);
+    public bool HasItem(ItemData item) => itemList.Contains(item);
 }
