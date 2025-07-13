@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class MerchantController : MonoBehaviour
+public class MerchantTrigger : MonoBehaviour
 {
-    [SerializeField] private SHOP_UI uiShop;
+    [SerializeField] private SHOPUI uiShop;
     private bool isPlayerInRange = false;
     private IShopCustomer currentCustomer;
     private bool isShopOpen = false;

@@ -2,67 +2,33 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IShopCustomer
 {
-    [SerializeField] private int goldAmount = 100;
+    [SerializeField] private int gold = 100;
+    public int Gold => gold;
 
-    public bool TrySpendGoldAmount(int amount)
+    public bool TrySpendGold(int amount)
     {
-        if (goldAmount >= amount)
+        if (gold >= amount)
         {
-<<<<<<< Updated upstream
-            inventoryUI = inventory.GetComponentInChildren<Inventory_UI>();
-            inventoryUI.Init(inventory,   shopUI, this);
-        }
-    }
-
-    public bool BoughtItem(Item.ItemType itemType)
-    {
-        int cost = Item.GetCost(itemType);
-
-        if (!TrySpendGoldAmount(cost))
-        {
-            UIManager.Instance.ShowWarning("Not enough gold!");
-            Debug.Log("Not enough gold for: " + itemType);
-            return false;
-        }
-
-        Debug.Log("Bought item: " + itemType);
-
-        GetComponent<Inventory>().AddItem(itemType); 
-        UIManager.Instance.UpdateGoldUI(goldAmount);
-        return true;
-    }
-
-
-    public int GetGoldAmount()
-    {
-        return goldAmount;
-    }
-
-    public bool TrySpendGoldAmount(int spendGoldAmount)
-    {
-        if (goldAmount >= spendGoldAmount)
-        {
-            goldAmount -= spendGoldAmount;
-=======
-            goldAmount -= amount;
-            UIManager.Instance.UpdateGoldUI(goldAmount);
->>>>>>> Stashed changes
+            gold -= amount;
+            UIManager.Instance.UpdateGoldUI(gold);
             return true;
         }
+
+        UIManager.Instance.ShowWarning("Not enough gold!");
         return false;
     }
 
-    public int GetGoldAmount() => goldAmount;
-
     public void AddGold(int amount)
     {
-        goldAmount += amount;
-        UIManager.Instance.UpdateGoldUI(goldAmount);
+        gold += amount;
+        UIManager.Instance.UpdateGoldUI(gold);
     }
 
-    public void BoughtItem(Item_RE.ItemType itemType)
+    public bool BoughtItem(ItemData item)
     {
-        GetComponent<Inventory>().AddItem(itemType);
-        UIManager.Instance.ShowWarning($"Bought {itemType}");
+        if (!TrySpendGold(item.cost)) return false;
+
+        GetComponent<Inventory>().AddItem(item);
+        return true;
     }
 }
