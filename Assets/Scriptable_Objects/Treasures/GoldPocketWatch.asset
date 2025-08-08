@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfa61a7178677541aca385499ec65ee, type: 3}
+  m_Name: GoldPocketWatch
+  m_EditorClassIdentifier: 
+  itemName: Gold Pocket Watch
+  icon: {fileID: 21300000, guid: 6ccedbbc2e06b4a4d82791499a8ee911, type: 3}
+  descriptionImage: {fileID: 21300000, guid: 1e787f060afa4f64cad30354fef5fb4e, type: 3}
+  category: 3
+  cost: 200
+  rarity: 4
+  weight: 3
+  bulletCount: 0
+  power: 0
+  ammoCapacity: 0
+  reloadSpeed: 0
+  rateOfFire: 0
+  precision: 0
