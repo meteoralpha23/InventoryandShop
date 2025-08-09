@@ -2,59 +2,122 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IShopCustomer
 {
-    [SerializeField] private int goldAmount = 100;
-    [SerializeField] private SHOP_UI shopUI;
+    public static Player Instance { get; private set; }
+    
+    [SerializeField] private int gold = 0; // Start with 0 gold as per requirements
+    [SerializeField] private Inventory inventory;
+    [SerializeField] private float maxWeight = 100f; // Maximum weight player can carry
+
+    public int Gold => gold;
+    public float MaxWeight => maxWeight;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
+
     private void Start()
     {
-        Inventory inventory = GetComponent<Inventory>();
-        Inventory_UI inventoryUI = inventory.GetComponent<Inventory_UI>();
-    
+        inventory = GetComponent<Inventory>();
 
-        if (inventoryUI != null && shopUI != null)
+        if (inventory == null)
         {
-            inventoryUI = inventory.GetComponentInChildren<Inventory_UI>();
-            inventoryUI.Init(inventory,   shopUI, this);
-        }
-    }
-
-    public bool BoughtItem(Item_RE.ItemType itemType)
-    {
-        int cost = Item_RE.GetCost(itemType);
-
-        if (!TrySpendGoldAmount(cost))
-        {
-            UIManager.Instance.ShowWarning("Not enough gold!");
-            Debug.Log("Not enough gold for: " + itemType);
-            return false;
+            Debug.LogError("Inventory is NULL on Player!");
+            return;
         }
 
-        Debug.Log("Bought item: " + itemType);
-
-        GetComponent<Inventory>().AddItem(itemType); 
-        UIManager.Instance.UpdateGoldUI(goldAmount);
-        return true;
+        UIManager.Instance.UpdateGoldUI(gold);
+        UIManager.Instance.UpdateWeightUI(inventory.GetCurrentWeight(), maxWeight);
     }
 
-
-    public int GetGoldAmount()
+    public bool TrySpendGold(int amount)
     {
-        return goldAmount;
-    }
-
-    public bool TrySpendGoldAmount(int spendGoldAmount)
-    {
-        if (goldAmount >= spendGoldAmount)
+        if (gold >= amount)
         {
-            goldAmount -= spendGoldAmount;
+            gold -= amount;
+            UIManager.Instance.UpdateGoldUI(gold);
             return true;
+        }
+
+        UIManager.Instance.ShowWarning("Not enough gold!");
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlayNotEnoughGold();
+        }
+        else
+        {
+            Debug.Log("SoundManager.Instance is null! Cannot play sounds.");
         }
         return false;
     }
+
     public void AddGold(int amount)
     {
-        goldAmount += amount;
-        UIManager.Instance.UpdateGoldUI(goldAmount);
+        gold += amount;
+        UIManager.Instance.UpdateGoldUI(gold);
     }
 
+    public bool BoughtItem(ItemData item, int quantity = 1)
+    {
+        int totalCost = item.cost * quantity;
+        float totalWeight = item.weight * quantity;
+        
+        // Check if player has enough gold
+        if (!TrySpendGold(totalCost)) return false;
+        
+        // Check if adding this item would exceed weight limit
+        if (inventory.GetCurrentWeight() + totalWeight > maxWeight)
+        {
+            UIManager.Instance.ShowWarning("Inventory too heavy!");
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.PlayInventoryFull();
+            }
+            else
+            {
+                Debug.Log("SoundManager.Instance is null! Cannot play sounds.");
+            }
+            // Refund the gold since we can't carry the item
+            AddGold(totalCost);
+            return false;
+        }
+        
+        inventory.AddItem(item, quantity);
+        UIManager.Instance.UpdateWeightUI(inventory.GetCurrentWeight(), maxWeight);
+        
+        // Play sounds
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlayBuySuccess();
+            SoundManager.Instance.PlayItemAdded();
+        }
+        else
+        {
+            Debug.Log("SoundManager.Instance is null! Cannot play sounds.");
+        }
+        
+        return true;
     }
-    
+
+    public int GetGoldAmount() => gold;
+
+    public bool HasItem(ItemData item)
+    {
+        return inventory.HasItem(item);
+    }
+
+    public bool HasEnoughQuantity(ItemData item, int requiredQuantity)
+    {
+        return inventory.GetItemQuantity(item) >= requiredQuantity;
+    }
+
+    public Inventory GetInventory()
+    {
+        return inventory;
+    }
+}

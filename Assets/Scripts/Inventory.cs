@@ -1,36 +1,61 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    private List<Item_RE.ItemType> itemList = new List<Item_RE.ItemType>();
-    [SerializeField] private Inventory_UI inventoryUI;
+    public event Action OnInventoryChanged;
+    private List<InventoryItem> ownedItems = new();
 
-    public void AddItem(Item_RE.ItemType itemType)
+    public void AddItem(ItemData item, int quantity = 1)
     {
-        if (!itemList.Contains(itemType))
+        var existing = ownedItems.Find(x => x.data == item);
+        if (existing != null)
         {
-            itemList.Add(itemType);
-            Debug.Log("Item added to inventory: " + itemType);
-            inventoryUI?.RefreshInventory(itemList); 
+            existing.quantity += quantity;
+        }
+        else
+        {
+            ownedItems.Add(new InventoryItem(item, quantity));
+        }
+
+        OnInventoryChanged?.Invoke();
+    }
+
+    public void RemoveItem(ItemData data, int quantity = 1)
+    {
+        var item = ownedItems.Find(i => i.data == data);
+        if (item != null)
+        {
+            item.quantity -= quantity;
+            if (item.quantity <= 0)
+                ownedItems.Remove(item);
+
+            OnInventoryChanged?.Invoke();
         }
     }
 
-    public bool HasItem(Item_RE.ItemType itemType)
+    public List<InventoryItem> GetAllItems() => new(ownedItems);
+
+    public float GetCurrentWeight()
     {
-        return itemList.Contains(itemType);
+        return ownedItems.Sum(item => item.GetTotalWeight());
     }
 
-    public List<Item_RE.ItemType> GetAllItems()
+    public bool HasItem(ItemData item)
     {
-        return itemList;
+        return ownedItems.Exists(x => x.data == item);
     }
-    public void RemoveItem(Item_RE.ItemType itemType)
+
+    public int GetItemQuantity(ItemData item)
     {
-        if (itemList.Contains(itemType))
-        {
-            itemList.Remove(itemType);
-            inventoryUI?.RefreshInventory(itemList);
-        }
+        var inventoryItem = ownedItems.Find(x => x.data == item);
+        return inventoryItem?.quantity ?? 0;
+    }
+
+    public List<InventoryItem> GetItemsByCategory(ItemCategory category)
+    {
+        return ownedItems.FindAll(item => item.data.category == category);
     }
 }
