@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: Gunpowder
   icon: {fileID: 21300000, guid: 90706fc8b3f6db1499a697957acbed67, type: 3}
   descriptionImage: {fileID: 21300000, guid: a8c07ab38822a40428f14b1a9ce4d499, type: 3}
+  draggableSprite: {fileID: 0}
   category: 2
   cost: 600
   rarity: 2

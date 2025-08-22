@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: Glock 19 Gen5
   icon: {fileID: 21300000, guid: ff0c2b1dd0ef25840a54f56cb9bfc2b0, type: 3}
   descriptionImage: {fileID: 21300000, guid: 3422d16f948ac7d4ba9984f6be2a1a4a, type: 3}
+  draggableSprite: {fileID: 0}
   category: 0
   cost: 1000
   rarity: 0

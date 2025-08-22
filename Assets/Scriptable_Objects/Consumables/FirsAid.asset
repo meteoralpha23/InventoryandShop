@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: First Aid Spray
   icon: {fileID: 21300000, guid: c124945b962e67a478c834d7c254e5c4, type: 3}
   descriptionImage: {fileID: 21300000, guid: e1f2a8d192b54fe449396de700ad6c7f, type: 3}
+  draggableSprite: {fileID: 0}
   category: 1
   cost: 1000
   rarity: 3

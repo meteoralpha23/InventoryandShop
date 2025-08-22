@@ -82,9 +82,7 @@ public class QuantitySelectionPopup : MonoBehaviour
             currentQuantity++;
             UpdateQuantityUI();
             
-            // Play quantity change sound
-            if (SoundManager.Instance != null)
-                SoundManager.Instance.PlayQuantityChange();
+            // Removed undefined sound method call
         }
     }
 
@@ -95,9 +93,7 @@ public class QuantitySelectionPopup : MonoBehaviour
             currentQuantity--;
             UpdateQuantityUI();
             
-            // Play quantity change sound
-            if (SoundManager.Instance != null)
-                SoundManager.Instance.PlayQuantityChange();
+            // Removed undefined sound method call
         }
     }
 
@@ -151,8 +147,7 @@ public class QuantitySelectionPopup : MonoBehaviour
 
     private void CancelSelection()
     {
-        if (SoundManager.Instance != null)
-            SoundManager.Instance.PlayCancel();
+        // Removed undefined sound method call
         gameObject.SetActive(false);
     }
 } 

@@ -40,15 +40,13 @@ public class SellConfirmationPopup : MonoBehaviour
         noButton.onClick.RemoveAllListeners();
 
         yesButton.onClick.AddListener(() => {
-            if (SoundManager.Instance != null)
-                SoundManager.Instance.PlayConfirmation();
+            // Removed undefined sound method call
             onConfirm?.Invoke();
             gameObject.SetActive(false);
         });
 
         noButton.onClick.AddListener(() => {
-            if (SoundManager.Instance != null)
-                SoundManager.Instance.PlayCancel();
+            // Removed undefined sound method call
             gameObject.SetActive(false);
         });
     }

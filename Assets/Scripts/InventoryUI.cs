@@ -11,11 +11,8 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private GameObject itemPrefab;
     [SerializeField] private TextMeshProUGUI weightText;
 
-    [Header("Category Buttons")]
-    [SerializeField] private Button weaponButton;
-    [SerializeField] private Button consumableButton;
-    [SerializeField] private Button materialButton;
-    [SerializeField] private Button treasureButton;
+    [Header("Category Dropdown")]
+    [SerializeField] private TMP_Dropdown categoryDropdown;
 
     [Header("Description Panel")]
     [SerializeField] private DescriptionPanelController descriptionPanel;
@@ -28,70 +25,50 @@ public class InventoryUI : MonoBehaviour
 
     private void Start()
     {
-        // Ensure all category buttons have the MainPanelButton script for animations
-        EnsureButtonAnimations();
+        // Set up dropdown
+        SetupCategoryDropdown();
         
-        // Set up button listeners
-        weaponButton.onClick.AddListener(() => {
-            if (SoundManager.Instance != null)
-                SoundManager.Instance.PlayTabSwitch();
-            else
-                Debug.Log("SoundManager.Instance is null! Cannot play sounds.");
-            ShowCategory(ItemCategory.Weapon);
-        });
-        consumableButton.onClick.AddListener(() => {
-            if (SoundManager.Instance != null)
-                SoundManager.Instance.PlayTabSwitch();
-            else
-                Debug.Log("SoundManager.Instance is null! Cannot play sounds.");
-            ShowCategory(ItemCategory.Consumable);
-        });
-        materialButton.onClick.AddListener(() => {
-            if (SoundManager.Instance != null)
-                SoundManager.Instance.PlayTabSwitch();
-            else
-                Debug.Log("SoundManager.Instance is null! Cannot play sounds.");
-            ShowCategory(ItemCategory.Material);
-        });
-        treasureButton.onClick.AddListener(() => {
-            if (SoundManager.Instance != null)
-                SoundManager.Instance.PlayTabSwitch();
-            else
-                Debug.Log("SoundManager.Instance is null! Cannot play sounds.");
-            ShowCategory(ItemCategory.Treasure);
-        });
-
         Hide();
         if (descriptionPanel != null)
             descriptionPanel.Hide();
     }
 
-    private void EnsureButtonAnimations()
+    private void SetupCategoryDropdown()
     {
-        // Ensure all category buttons have the MainPanelButton script for animations
-        Button[] categoryButtons = { weaponButton, consumableButton, materialButton, treasureButton };
-        
-        foreach (Button button in categoryButtons)
+        if (categoryDropdown != null)
         {
-            if (button != null)
+            // Clear existing options
+            categoryDropdown.ClearOptions();
+            
+            // Add category options
+            List<string> options = new List<string>
             {
-                // Add MainPanelButton script if it doesn't exist
-                if (button.GetComponent<Michsky.UI.Dark.MainPanelButton>() == null)
-                {
-                    button.gameObject.AddComponent<Michsky.UI.Dark.MainPanelButton>();
-                    Debug.Log($"Added MainPanelButton script to {button.name}");
-                }
-                
-                // Ensure Animator component exists
-                if (button.GetComponent<Animator>() == null)
-                {
-                    button.gameObject.AddComponent<Animator>();
-                    Debug.Log($"Added Animator component to {button.name}");
-                }
-                
-
-            }
+                "Weapons",
+                "Consumables", 
+                "Materials",
+                "Treasures"
+            };
+            
+            categoryDropdown.AddOptions(options);
+            
+            // Set default value
+            categoryDropdown.value = 0;
+            
+            // Add listener
+            categoryDropdown.onValueChanged.AddListener(OnCategoryChanged);
         }
+    }
+
+    private void OnCategoryChanged(int index)
+    {
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlayTabSwitch();
+        else
+            Debug.Log("SoundManager.Instance is null! Cannot play sounds.");
+            
+        // Convert dropdown index to ItemCategory
+        ItemCategory selectedCategory = (ItemCategory)index;
+        ShowCategory(selectedCategory);
     }
     
 
@@ -128,6 +105,11 @@ public class InventoryUI : MonoBehaviour
     public void SetCategory(ItemCategory category)
     {
         currentCategory = category;
+        // Update dropdown value to match the new category
+        if (categoryDropdown != null)
+        {
+            categoryDropdown.value = (int)category;
+        }
         RefreshUI();
     }
 
@@ -136,9 +118,16 @@ public class InventoryUI : MonoBehaviour
         if (UIManager.Instance != null)
             UIManager.Instance.HideAllPopups();
         currentCategory = category;
-        // Don't unfreeze the description panel when refreshing - let it stay visible
-        // if (descriptionPanel != null)
-        //     descriptionPanel.Unfreeze();
+        
+        // Update dropdown value to match the selected category
+        if (categoryDropdown != null)
+        {
+            categoryDropdown.value = (int)category;
+        }
+        
+        // Hide description panel when switching categories
+        if (descriptionPanel != null)
+            descriptionPanel.Hide();
 
         RefreshUI();
     }
@@ -227,7 +216,6 @@ public class InventoryUI : MonoBehaviour
                     if (SoundManager.Instance != null)
                     {
                         SoundManager.Instance.PlaySellSuccess();
-                        SoundManager.Instance.PlayItemRemoved();
                     }
                 }
             }, true, item.quantity);
@@ -250,7 +238,6 @@ public class InventoryUI : MonoBehaviour
                 if (SoundManager.Instance != null)
                 {
                     SoundManager.Instance.PlaySellSuccess();
-                    SoundManager.Instance.PlayItemRemoved();
                 }
             }, sellMessage);
         }

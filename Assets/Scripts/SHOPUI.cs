@@ -22,6 +22,7 @@ public class ShopUI : MonoBehaviour
     private List<ItemData> itemsForSale = new();
     private IShopCustomer currentCustomer;
     private ItemCategory currentCategory = ItemCategory.Weapon;
+    private bool hasMadePurchase = false; // Track if player made any purchase during this shop visit
 
     private void Start()
     {
@@ -62,21 +63,11 @@ public class ShopUI : MonoBehaviour
     public void Show(IShopCustomer customer)
     {
         currentCustomer = customer;
+        hasMadePurchase = false; // Reset purchase flag when opening shop
         ShowCategory(currentCategory);
         gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        
-        // Play shop open sound
-        if (SoundManager.Instance != null)
-        {
-            SoundManager.Instance.PlayShopOpen();
-            SoundManager.Instance.PlayMerchantGreeting();
-        }
-        else
-        {
-            Debug.Log("SoundManager.Instance is null! Cannot play sounds.");
-        }
     }
 
     public void Hide()
@@ -87,11 +78,17 @@ public class ShopUI : MonoBehaviour
         if (descriptionPanel != null)
             descriptionPanel.Unfreeze();
             
-        // Play shop close sound
+        // Play appropriate sound based on whether player made a purchase
         if (SoundManager.Instance != null)
         {
-            SoundManager.Instance.PlayShopClose();
-            SoundManager.Instance.PlayMerchantGoodbye();
+            if (hasMadePurchase)
+            {
+                SoundManager.Instance.PlayMerchantGoodbye(); // Happy goodbye if purchase was made
+            }
+            else
+            {
+                SoundManager.Instance.PlayMerchantDisappointed(); // Disappointed if no purchase
+            }
         }
         else
         {
@@ -176,6 +173,7 @@ public class ShopUI : MonoBehaviour
                     {
                         if (currentCustomer.BoughtItem(item, quantity))
                         {
+                            hasMadePurchase = true; // Mark that a purchase was made
                             if (SoundManager.Instance != null)
                                 SoundManager.Instance.PlayMerchantLaugh();
                             else
@@ -201,6 +199,7 @@ public class ShopUI : MonoBehaviour
                     {
                         if (currentCustomer.BoughtItem(item))
                         {
+                            hasMadePurchase = true; // Mark that a purchase was made
                             if (SoundManager.Instance != null)
                                 SoundManager.Instance.PlayMerchantLaugh();
                             else

@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: SniperBullets
   icon: {fileID: 21300000, guid: a1c7d84c0e0af924d80a1c913c7e32e5, type: 3}
   descriptionImage: {fileID: 21300000, guid: e1f2a8d192b54fe449396de700ad6c7f, type: 3}
+  draggableSprite: {fileID: 0}
   category: 1
   cost: 800
   rarity: 4

@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: Gold Pocket Watch
   icon: {fileID: 21300000, guid: 6ccedbbc2e06b4a4d82791499a8ee911, type: 3}
   descriptionImage: {fileID: 21300000, guid: 1e787f060afa4f64cad30354fef5fb4e, type: 3}
+  draggableSprite: {fileID: 0}
   category: 3
   cost: 200
   rarity: 4

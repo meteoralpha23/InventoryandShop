@@ -90,11 +90,7 @@ public class UIManager : MonoBehaviour
         // Play warning sound for certain messages
         if (SoundManager.Instance != null)
         {
-            if (message.Contains("heavy") || message.Contains("weight"))
-            {
-                SoundManager.Instance.PlayWeightWarning();
-            }
-            else if (message.Contains("gold") || message.Contains("money"))
+            if (message.Contains("gold") || message.Contains("money"))
             {
                 SoundManager.Instance.PlayNotEnoughGold();
             }

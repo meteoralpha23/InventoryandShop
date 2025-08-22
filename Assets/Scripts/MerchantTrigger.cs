@@ -14,6 +14,16 @@ public class MerchantTrigger : MonoBehaviour
         {
             inRange = true;
             UIManager.Instance.ShowWarning("Press E to open shop");
+            
+            // Play merchant greeting sound when player enters trigger area
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.PlayMerchantGreeting();
+            }
+            else
+            {
+                Debug.Log("SoundManager.Instance is null! Cannot play merchant greeting sound.");
+            }
         }
     }
 

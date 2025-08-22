@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: BindingTape
   icon: {fileID: 21300000, guid: ecf7298c83aa5e54c8f47959e94d9b70, type: 3}
   descriptionImage: {fileID: 21300000, guid: 30105159fe57e5f43bacffedaa2aa7fc, type: 3}
+  draggableSprite: {fileID: 0}
   category: 2
   cost: 200
   rarity: 0

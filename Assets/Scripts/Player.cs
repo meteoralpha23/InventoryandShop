@@ -94,7 +94,6 @@ public class Player : MonoBehaviour, IShopCustomer
         if (SoundManager.Instance != null)
         {
             SoundManager.Instance.PlayBuySuccess();
-            SoundManager.Instance.PlayItemAdded();
         }
         else
         {

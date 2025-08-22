@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: Miltary Medal
   icon: {fileID: 21300000, guid: cf355dc67e23e7a4da872c5aed2f7d15, type: 3}
   descriptionImage: {fileID: 21300000, guid: 6c3b803fdb471d94f96a8e792979bf84, type: 3}
+  draggableSprite: {fileID: 0}
   category: 3
   cost: 2000
   rarity: 3

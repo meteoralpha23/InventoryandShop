@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: Handgun-Rounds
   icon: {fileID: 21300000, guid: acf9da4a94b13ac4d94dcd449852e278, type: 3}
   descriptionImage: {fileID: 21300000, guid: d4a3a93a53faf8240b4219c7e2dc127e, type: 3}
+  draggableSprite: {fileID: 0}
   category: 1
   cost: 300
   rarity: 0

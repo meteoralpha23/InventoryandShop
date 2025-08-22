@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: Ak47-Rounds
   icon: {fileID: 21300000, guid: 8f1f196fb1fad444f9a38390b36eb5b0, type: 3}
   descriptionImage: {fileID: 21300000, guid: 01228681b9fba274f8d125277410551f, type: 3}
+  draggableSprite: {fileID: 0}
   category: 1
   cost: 500
   rarity: 2

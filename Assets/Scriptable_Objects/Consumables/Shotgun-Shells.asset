@@ -15,6 +15,7 @@ MonoBehaviour:
   itemName: Shotgun-Shells
   icon: {fileID: 21300000, guid: dbca402308d41964b9116ba975e888de, type: 3}
   descriptionImage: {fileID: 21300000, guid: 8a29783a14e510b4596e787ae4af3fea, type: 3}
+  draggableSprite: {fileID: 0}
   category: 1
   cost: 600
   rarity: 3
