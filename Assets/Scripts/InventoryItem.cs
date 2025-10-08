@@ -1,17 +1,21 @@
+using UnityEngine;
+
 [System.Serializable]
-public class InventoryItem
+public class InventoryItem : MonoBehaviour
 {
     public ItemData data;
     public int quantity;
 
-    public InventoryItem(ItemData data, int quantity)
+   
+    public void Initialize(ItemData itemData, int itemQuantity)
     {
-        this.data = data;
-        this.quantity = quantity;
+        this.data = itemData;
+        this.quantity = itemQuantity;
     }
 
     public float GetTotalWeight()
     {
+        if (data == null) return 0f;
         return data.weight * quantity;
     }
 }

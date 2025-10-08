@@ -20,6 +20,8 @@ MonoBehaviour:
   cost: 3000
   rarity: 2
   weight: 35
+  tileSizeWidth: 5
+  tileSizeHeight: 5
   bulletCount: 15
   power: 35
   ammoCapacity: 30

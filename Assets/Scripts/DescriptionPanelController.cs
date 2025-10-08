@@ -4,14 +4,14 @@ using TMPro;
 
 public class DescriptionPanelController : MonoBehaviour
 {
-    [SerializeField] private GameObject panelRoot; // The root GameObject of the panel
+    [SerializeField] private GameObject panelRoot; 
     [SerializeField] private Image descriptionImage;
     [SerializeField] private TextMeshProUGUI powerText;
     [SerializeField] private TextMeshProUGUI ammoCapacityText;
     [SerializeField] private TextMeshProUGUI reloadSpeedText;
     [SerializeField] private TextMeshProUGUI rateOfFireText;
     [SerializeField] private TextMeshProUGUI precisionText;
-    [SerializeField] private GameObject freezePanel; // Optional: for full-screen freeze
+    [SerializeField] private GameObject freezePanel; 
 
     private bool isFrozen = false;
 

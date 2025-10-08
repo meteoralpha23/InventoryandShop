@@ -63,7 +63,7 @@ public class ShopUI : MonoBehaviour
     public void Show(IShopCustomer customer)
     {
         currentCustomer = customer;
-        hasMadePurchase = false; // Reset purchase flag when opening shop
+        hasMadePurchase = false; 
         ShowCategory(currentCategory);
         gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
@@ -78,16 +78,16 @@ public class ShopUI : MonoBehaviour
         if (descriptionPanel != null)
             descriptionPanel.Unfreeze();
             
-        // Play appropriate sound based on whether player made a purchase
+        
         if (SoundManager.Instance != null)
         {
             if (hasMadePurchase)
             {
-                SoundManager.Instance.PlayMerchantGoodbye(); // Happy goodbye if purchase was made
+                SoundManager.Instance.PlayMerchantGoodbye(); 
             }
             else
             {
-                SoundManager.Instance.PlayMerchantDisappointed(); // Disappointed if no purchase
+                SoundManager.Instance.PlayMerchantDisappointed();
             }
         }
         else
@@ -116,9 +116,7 @@ public class ShopUI : MonoBehaviour
         if (UIManager.Instance != null)
             UIManager.Instance.HideAllPopups();
         currentCategory = category;
-        // Don't unfreeze the description panel when refreshing - let it stay visible
-        // if (descriptionPanel != null)
-        //     descriptionPanel.Unfreeze();
+  
 
         foreach (Transform child in container)
         {
@@ -163,7 +161,7 @@ public class ShopUI : MonoBehaviour
                         int currentOwned = player.GetInventory().GetItemQuantity(item);
                         if (currentOwned >= 5)
                         {
-                            // Player already has 5, can't buy more
+                          
                             UIManager.Instance.ShowWarning("You already have the maximum amount of this item!");
                             return;
                         }
@@ -179,7 +177,7 @@ public class ShopUI : MonoBehaviour
                             else
                                 Debug.Log("SoundManager.Instance is null! Cannot play sounds.");
                             
-                            // Add items to the draggable item list
+                           
                   
                             
                             ShowCategory(currentCategory);
@@ -199,7 +197,7 @@ public class ShopUI : MonoBehaviour
                     {
                         if (currentCustomer.BoughtItem(item))
                         {
-                            hasMadePurchase = true; // Mark that a purchase was made
+                            hasMadePurchase = true; 
                             if (SoundManager.Instance != null)
                                 SoundManager.Instance.PlayMerchantLaugh();
                             else

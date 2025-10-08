@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+
     public event Action OnInventoryChanged;
     private List<InventoryItem> ownedItems = new();
-
+    [HideInInspector]
     public void AddItem(ItemData item, int quantity = 1)
     {
         var existing = ownedItems.Find(x => x.data == item);
@@ -17,7 +18,11 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            ownedItems.Add(new InventoryItem(item, quantity));
+           
+            GameObject itemObj = new GameObject("InventoryItem");
+            InventoryItem inventoryItem = itemObj.AddComponent<InventoryItem>();
+            inventoryItem.Initialize(item, quantity);
+            ownedItems.Add(inventoryItem);
         }
 
         OnInventoryChanged?.Invoke();
@@ -58,4 +63,6 @@ public class Inventory : MonoBehaviour
     {
         return ownedItems.FindAll(item => item.data.category == category);
     }
+
+
 }

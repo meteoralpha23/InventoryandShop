@@ -31,7 +31,6 @@ public class InventoryItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
         nameText.text = item.data.itemName;
         quantityText.text = "x" + item.quantity;
 
-        // Display weight
         if (weightText != null)
         {
             weightText.text = $"{item.data.weight:F1}";
@@ -117,5 +116,21 @@ public class InventoryItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
             descriptionPanel.Hide();
         }
     }
-}
+
+
+   
+
+
+      
+
+   
+    }
+
+
+
+
+
+
+
+
 

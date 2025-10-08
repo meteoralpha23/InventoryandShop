@@ -5,17 +5,18 @@ public class ItemData : ScriptableObject
 {
     public string itemName;
     public Sprite icon;
-    public Sprite descriptionImage; // Large image for right-side panel
-    public Sprite draggableSprite; // Sprite for dragging in inventory grid
+    public Sprite descriptionImage;
     public ItemCategory category;
     public int cost;
     public Rarity rarity;
     public float weight;
 
+
+
     [Header("Weapon-specific")]
     public int bulletCount;
 
-    // --- Only stat fields for right-side panel ---
+ 
     public float power;
     public int ammoCapacity;
     public float reloadSpeed;

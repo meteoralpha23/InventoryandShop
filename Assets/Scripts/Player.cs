@@ -4,9 +4,9 @@ public class Player : MonoBehaviour, IShopCustomer
 {
     public static Player Instance { get; private set; }
     
-    [SerializeField] private int gold = 0; // Start with 0 gold as per requirements
+    [SerializeField] private int gold = 0; 
     [SerializeField] private Inventory inventory;
-    [SerializeField] private float maxWeight = 100f; // Maximum weight player can carry
+    [SerializeField] private float maxWeight = 100f; 
 
     public int Gold => gold;
     public float MaxWeight => maxWeight;
@@ -66,11 +66,10 @@ public class Player : MonoBehaviour, IShopCustomer
     {
         int totalCost = item.cost * quantity;
         float totalWeight = item.weight * quantity;
-        
-        // Check if player has enough gold
+      
         if (!TrySpendGold(totalCost)) return false;
         
-        // Check if adding this item would exceed weight limit
+      
         if (inventory.GetCurrentWeight() + totalWeight > maxWeight)
         {
             UIManager.Instance.ShowWarning("Inventory too heavy!");
@@ -82,7 +81,7 @@ public class Player : MonoBehaviour, IShopCustomer
             {
                 Debug.Log("SoundManager.Instance is null! Cannot play sounds.");
             }
-            // Refund the gold since we can't carry the item
+           
             AddGold(totalCost);
             return false;
         }

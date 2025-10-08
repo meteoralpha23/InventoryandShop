@@ -1,0 +1,61 @@
+[33m765b714[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{0}: reset: moving to 765b714a523c822930422c8642ff0c2e95aa1017
+[33mddb4c56[m HEAD@{1}: reset: moving to ddb4c568eef84ff45f789a53ce30c38285958811
+[33m9824866[m HEAD@{2}: reset: moving to 9824866d112368b483d4dca4a8ea827f8db07d95
+[33m5411dc7[m HEAD@{3}: reset: moving to 5411dc7ebe1b6bdeaff72451133463598104d938
+[33mfd0620c[m HEAD@{4}: reset: moving to fd0620cac503aba372c806f679969179a5c80175
+[33m529b70b[m HEAD@{5}: commit: Remove build files from repo
+[33mfd0620c[m HEAD@{6}: 
+[33mac57efb[m HEAD@{7}: commit: Configure Git LFS for Unity
+[33mb904375[m HEAD@{8}: reset: moving to b90437530bd7dba6b58e261f31246c5772fd3045
+[33m1da34ee[m HEAD@{9}: reset: moving to 1da34ee5fa961b6cdd57a0baf59f47a817c65876
+[33m9f0040b[m HEAD@{10}: rebase (finish): returning to refs/heads/main
+[33m9f0040b[m HEAD@{11}: rebase (squash): Tracking files with LFS
+[33m74f4fe7[m HEAD@{12}: rebase (squash): # This is a combination of 2 commits.
+[33mf9e1084[m HEAD@{13}: rebase (start): checkout f9e108401673b3eb3679adc545b6a6f59c7d8c7e^
+[33m6b1bd58[m HEAD@{14}: reset: moving to HEAD
+[33m6b1bd58[m HEAD@{15}: commit: Tracking files with LFS
+[33m02f0cb9[m HEAD@{16}: 
+[33mbf62754[m HEAD@{17}: commit: Tracking files with LFS
+[33m463fa1e[m HEAD@{18}: commit: Tracking files with LFS
+[33m254493e[m HEAD@{19}: reset: moving to 254493e05c72a5d19046508661e363a1b7a43414
+[33mb5485cb[m HEAD@{20}: commit: d
+[33m254493e[m HEAD@{21}: commit: Deleting large files.
+[33m7c2958c[m HEAD@{22}: commit: Posting
+[33mdcc591a[m HEAD@{23}: commit: Done
+[33m3bd4836[m HEAD@{24}: commit: cleaning up
+[33m43c69fa[m HEAD@{25}: commit: Moving to grid
+[33m336c1c7[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{26}: checkout: moving from Creating_Shop_UI_Panel to main
+[33m112d88c[m[33m ([m[1;31morigin/Creating_Shop_UI_Panel[m[33m)[m HEAD@{27}: reset: moving to HEAD
+[33m112d88c[m[33m ([m[1;31morigin/Creating_Shop_UI_Panel[m[33m)[m HEAD@{28}: checkout: moving from main to Creating_Shop_UI_Panel
+[33m336c1c7[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{29}: checkout: moving from Creating_Shop_UI_Panel to main
+[33m112d88c[m[33m ([m[1;31morigin/Creating_Shop_UI_Panel[m[33m)[m HEAD@{30}: reset: moving to HEAD
+[33m112d88c[m[33m ([m[1;31morigin/Creating_Shop_UI_Panel[m[33m)[m HEAD@{31}: commit: Create Editor.meta
+[33m540c819[m HEAD@{32}: commit: Done with sstem
+[33m4db3f7b[m HEAD@{33}: checkout: moving from main to Creating_Shop_UI_Panel
+[33m4a980ef[m HEAD@{34}: checkout: moving from Creating_Shop_UI_Panel to main
+[33m4db3f7b[m HEAD@{35}: checkout: moving from Refactoring-and-Optimizing- to Creating_Shop_UI_Panel
+[33me9c363a[m[33m ([m[1;31morigin/Refactoring-and-Optimizing-[m[33m)[m HEAD@{36}: checkout: moving from Creating_Shop_UI_Panel to Refactoring-and-Optimizing-
+[33m4db3f7b[m HEAD@{37}: commit: Fixed
+[33me9c363a[m[33m ([m[1;31morigin/Refactoring-and-Optimizing-[m[33m)[m HEAD@{38}: checkout: moving from Creating_Shop_UI_Panel to Creating_Shop_UI_Panel
+[33me9c363a[m[33m ([m[1;31morigin/Refactoring-and-Optimizing-[m[33m)[m HEAD@{39}: checkout: moving from Refactoring-and-Optimizing- to Creating_Shop_UI_Panel
+[33me9c363a[m[33m ([m[1;31morigin/Refactoring-and-Optimizing-[m[33m)[m HEAD@{40}: checkout: moving from Creating_Shop_UI_Panel to Refactoring-and-Optimizing-
+[33me9c363a[m[33m ([m[1;31morigin/Refactoring-and-Optimizing-[m[33m)[m HEAD@{41}: checkout: moving from Refactoring-and-Optimizing- to Creating_Shop_UI_Panel
+[33me9c363a[m[33m ([m[1;31morigin/Refactoring-and-Optimizing-[m[33m)[m HEAD@{42}: checkout: moving from Creating_Shop_UI_Panel to Refactoring-and-Optimizing-
+[33me9c363a[m[33m ([m[1;31morigin/Refactoring-and-Optimizing-[m[33m)[m HEAD@{43}: checkout: moving from Refactoring-and-Optimizing- to Creating_Shop_UI_Panel
+[33me9c363a[m[33m ([m[1;31morigin/Refactoring-and-Optimizing-[m[33m)[m HEAD@{44}: reset: moving to HEAD
+[33me9c363a[m[33m ([m[1;31morigin/Refactoring-and-Optimizing-[m[33m)[m HEAD@{45}: checkout: moving from Creating_Shop_UI_Panel to Refactoring-and-Optimizing-
+[33me9c363a[m[33m ([m[1;31morigin/Refactoring-and-Optimizing-[m[33m)[m HEAD@{46}: commit: DOne
+[33m16a902a[m HEAD@{47}: reset: moving to 16a902a0b1e83b7514a14c302aab26e8ce81843a
+[33m0dbdd5d[m HEAD@{48}: commit: DOne
+[33m16a902a[m HEAD@{49}: checkout: moving from main to Creating_Shop_UI_Panel
+[33m4a980ef[m HEAD@{50}: reset: moving to HEAD
+[33m4a980ef[m HEAD@{51}: checkout: moving from Creating_Shop_UI_Panel to main
+[33m16a902a[m HEAD@{52}: reset: moving to HEAD
+[33m16a902a[m HEAD@{53}: commit: Completed
+[33ma335fce[m HEAD@{54}: commit: Worked on Items
+[33m8351a3f[m HEAD@{55}: commit: Added some third party scripts
+[33m0319a67[m HEAD@{56}: commit: Done With basic UI of shop Panel
+[33mf02d238[m HEAD@{57}: commit: Added UI Icons for Buy and Sell
+[33m6da3146[m HEAD@{58}: checkout: moving from main to Creating_Shop_UI_Panel
+[33m6da3146[m HEAD@{59}: commit: Done_With_Setup
+[33mff35b64[m HEAD@{60}: commit (initial): Initial commit
