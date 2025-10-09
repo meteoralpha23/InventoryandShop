@@ -66,10 +66,11 @@ public class Player : MonoBehaviour, IShopCustomer
     {
         int totalCost = item.cost * quantity;
         float totalWeight = item.weight * quantity;
-      
+        
+        // Check if player has enough gold
         if (!TrySpendGold(totalCost)) return false;
         
-      
+        // Check if adding this item would exceed weight limit
         if (inventory.GetCurrentWeight() + totalWeight > maxWeight)
         {
             UIManager.Instance.ShowWarning("Inventory too heavy!");
@@ -81,7 +82,7 @@ public class Player : MonoBehaviour, IShopCustomer
             {
                 Debug.Log("SoundManager.Instance is null! Cannot play sounds.");
             }
-           
+            // Refund the gold since we can't carry the item
             AddGold(totalCost);
             return false;
         }

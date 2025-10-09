@@ -18,7 +18,7 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-           
+            // Create a new GameObject with InventoryItem component
             GameObject itemObj = new GameObject("InventoryItem");
             InventoryItem inventoryItem = itemObj.AddComponent<InventoryItem>();
             inventoryItem.Initialize(item, quantity);

@@ -6,7 +6,7 @@ public class InventoryItem : MonoBehaviour
     public ItemData data;
     public int quantity;
 
-   
+    // Initialize method instead of constructor for MonoBehaviour
     public void Initialize(ItemData itemData, int itemQuantity)
     {
         this.data = itemData;
